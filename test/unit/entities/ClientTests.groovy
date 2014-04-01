@@ -1,4 +1,4 @@
-package grails_paradigmas
+package entities
 
 
 
@@ -8,8 +8,8 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Person)
-class PersonTests {
+@TestFor(Client)
+class ClientTests {
 
     void testSomething() {
        fail "Implement me"
