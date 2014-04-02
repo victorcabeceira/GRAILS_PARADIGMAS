@@ -5,6 +5,7 @@ class Product {
 	String name
 	String manufacturer
 	String type
+    String quantity
 	double price
 
     static constraints = {

@@ -2,8 +2,7 @@ package entities
 
 class Perfumery extends Product {
 
-	String type
-	Int quantity
+	String fragrancy
 
 	static constraints = {
 		type(blank: false,
