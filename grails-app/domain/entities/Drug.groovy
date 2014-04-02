@@ -4,6 +4,7 @@ class Drug extends Product {
 
 	String register
 	String code
+	Int quantity
 
 	static constraints = {
 		register(blank: false,

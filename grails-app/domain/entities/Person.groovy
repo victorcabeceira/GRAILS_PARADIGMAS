@@ -5,6 +5,7 @@ class Person {
 	String firstName
 	String lastName
 	String cpf
+	Int age
 
 	static constraints = {
 		firstName(blank: false,
