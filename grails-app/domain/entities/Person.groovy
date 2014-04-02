@@ -5,7 +5,7 @@ class Person {
 	String firstName
 	String lastName
 	String cpf
-	Int age
+	int age
 
 	static constraints = {
 		firstName(blank: false,
@@ -14,6 +14,7 @@ class Person {
 			size: 2..25)
 		cpf(blank: false,
 			cpf: true)
+		age(blank: false)
 	}
 
 }

@@ -5,7 +5,7 @@ class Product {
 	String name
 	String manufacturer
 	String type
-    String quantity
+    int quantity
 	double price
 
     static constraints = {
@@ -15,7 +15,9 @@ class Product {
             size: 1..50)
     	type(blank: false,
             inList: ["Liquid", "Bar"])
-    	price(blank:false)
+    	quantity(blank: false)
+        price(blank:false)
+
     }
 
 }
