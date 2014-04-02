@@ -32,6 +32,8 @@
 					
 						<g:sortableColumn property="price" title="${message(code: 'drug.price.label', default: 'Price')}" />
 					
+						<g:sortableColumn property="quantity" title="${message(code: 'drug.quantity.label', default: 'Quantity')}" />
+
 						<g:sortableColumn property="register" title="${message(code: 'drug.register.label', default: 'Register')}" />
 					
 						<g:sortableColumn property="code" title="${message(code: 'drug.code.label', default: 'Code')}" />
@@ -49,6 +51,8 @@
 						<td>${fieldValue(bean: drugInstance, field: "type")}</td>
 					
 						<td>${fieldValue(bean: drugInstance, field: "price")}</td>
+
+						<td>${fieldValue(bean: drugInstance, field: "quantity")}</td>
 					
 						<td>${fieldValue(bean: drugInstance, field: "register")}</td>
 					

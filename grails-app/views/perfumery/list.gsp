@@ -23,8 +23,15 @@
 			<table>
 				<thead>
 					<tr>
+						<g:sortableColumn property="name" title="${message(code: 'perfumery.name.label', default: 'Name')}" />
 					
+						<g:sortableColumn property="manufacturer" title="${message(code: 'perfumery.manufacturer.label', default: 'Manufacturer')}" />
+
 						<g:sortableColumn property="type" title="${message(code: 'perfumery.type.label', default: 'Type')}" />
+
+						<g:sortableColumn property="price" title="${message(code: 'perfumery.price.label', default: 'Price')}" />
+					
+						<g:sortableColumn property="quantity" title="${message(code: 'perfumery.quantity.label', default: 'Quantity')}" />
 					
 					</tr>
 				</thead>
@@ -32,8 +39,16 @@
 				<g:each in="${perfumeryInstanceList}" status="i" var="perfumeryInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${perfumeryInstance.id}">${fieldValue(bean: perfumeryInstance, field: "type")}</g:link></td>
+						<td><g:link action="show" id="${perfumeryInstance.id}">${fieldValue(bean: perfumeryInstance, field: "name")}</g:link></td>
+
+						<td>${fieldValue(bean: perfumeryInstance, field: "manufacturer")}</td>
 					
+						<td>${fieldValue(bean: perfumeryInstance, field: "type")}</td>
+
+						<td>${fieldValue(bean: perfumeryInstance, field: "price")}</td>
+
+						<td>${fieldValue(bean: perfumeryInstance, field: "quantity")}</td>
+
 					</tr>
 				</g:each>
 				</tbody>

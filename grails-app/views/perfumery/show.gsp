@@ -23,6 +23,26 @@
 			</g:if>
 			<ol class="property-list perfumery">
 			
+
+				<g:if test="${perfumeryInstance?.name}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="perfumery.name.label" default="Name" /></span>
+					
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${perfumeryInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${perfumeryInstance?.manufacturer}">
+				<li class="fieldcontain">
+					<span id="manufacturer-label" class="property-label"><g:message code="perfumery.manufacturer.label" default="Manufacturer" /></span>
+					
+						<span class="property-value" aria-labelledby="manufacturer-label"><g:fieldValue bean="${perfumeryInstance}" field="manufacturer"/></span>
+					
+				</li>
+				</g:if>
+
+
 				<g:if test="${perfumeryInstance?.type}">
 				<li class="fieldcontain">
 					<span id="type-label" class="property-label"><g:message code="perfumery.type.label" default="Type" /></span>

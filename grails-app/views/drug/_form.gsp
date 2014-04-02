@@ -31,7 +31,16 @@
 		<g:message code="drug.price.label" default="Price" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="price" value="${fieldValue(bean: drugInstance, field: 'price')}" required=""/>
+
+	<g:field name="quantity" value="${fieldValue(bean: drugInstance, field: 'quantity')}" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: drugInstance, field: 'quantity', 'error')} required">
+	<label for="quantity">
+		<g:message code="drug.quantity.label" default="Quantity" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="quantity" value="${fieldValue(bean: drugInstance, field: 'quantity')}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: drugInstance, field: 'register', 'error')} required">
