@@ -58,6 +58,33 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${perfumeryInstance?.price}">
+				<li class="fieldcontain">
+					<span id="price-label" class="property-label"><g:message code="perfumery.price.label" default="Fragrancy" /></span>
+					
+						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${perfumeryInstance}" field="price"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${perfumeryInstance?.quantity}">
+				<li class="fieldcontain">
+					<span id="quantity-label" class="property-label"><g:message code="perfumery.quantity.label" default="Fragrancy" /></span>
+					
+						<span class="property-value" aria-labelledby="quantity-label"><g:fieldValue bean="${perfumeryInstance}" field="quantity"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${perfumeryInstance?.stock}">
+				<li class="fieldcontain">
+					<span id="stock-label" class="property-label"><g:message code="perfumery.stock.label" default="Fragrancy" /></span>
+					
+						<span class="property-value" aria-labelledby="stock-label"><g:fieldValue bean="${perfumeryInstance}" field="stock"/></span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>

@@ -3,20 +3,30 @@ package entities
 class Product {
 
 	String name
-	String manufacturer
-	String type
+	
+    String manufacturer
+	
+    String type
+    
     int quantity
-	double price
+	
+    double price
+    
+    int stock
 
     static constraints = {
-    	name(blank: false,
+    	
+        name(blank: false,
             size: 1..50)
-    	manufacturer(blank: false,
+    	
+        manufacturer(blank: false,
             size: 1..50)
-    	/*type(blank: false,
-            inList: ["Liquid", "Bar"])*/
-    	quantity(blank: false)
-        price(blank:false)
+    	
+        quantity(blank: false)
+        
+        price(blank: false)
+        
+        stock(blank: false)
 
     }
 

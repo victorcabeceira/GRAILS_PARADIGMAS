@@ -27,6 +27,8 @@
 						<g:sortableColumn property="name" title="${message(code: 'drug.name.label', default: 'Name')}" />
 					
 						<g:sortableColumn property="manufacturer" title="${message(code: 'drug.manufacturer.label', default: 'Manufacturer')}" />
+
+						<g:sortableColumn property="pack" title="${message(code: 'drug.pack.label', default: 'Pack')}" />
 					
 						<g:sortableColumn property="type" title="${message(code: 'drug.type.label', default: 'Type')}" />
 					
@@ -37,6 +39,8 @@
 						<g:sortableColumn property="register" title="${message(code: 'drug.register.label', default: 'Register')}" />
 					
 						<g:sortableColumn property="code" title="${message(code: 'drug.code.label', default: 'Code')}" />
+
+						<g:sortableColumn property="stock" title="${message(code: 'drug.stock.label', default: 'Stock')}" />
 					
 					</tr>
 				</thead>
@@ -48,6 +52,8 @@
 					
 						<td>${fieldValue(bean: drugInstance, field: "manufacturer")}</td>
 					
+						<td>${fieldValue(bean: drugInstance, field: "pack")}</td>
+
 						<td>${fieldValue(bean: drugInstance, field: "type")}</td>
 					
 						<td>${fieldValue(bean: drugInstance, field: "price")}</td>
@@ -57,6 +63,8 @@
 						<td>${fieldValue(bean: drugInstance, field: "register")}</td>
 					
 						<td>${fieldValue(bean: drugInstance, field: "code")}</td>
+
+						<td>${fieldValue(bean: drugInstance, field: "stock")}</td>
 					
 					</tr>
 				</g:each>

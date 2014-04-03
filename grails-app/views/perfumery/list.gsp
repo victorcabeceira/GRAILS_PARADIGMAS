@@ -34,6 +34,8 @@
 						<g:sortableColumn property="price" title="${message(code: 'perfumery.price.label', default: 'Price')}" />
 					
 						<g:sortableColumn property="quantity" title="${message(code: 'perfumery.quantity.label', default: 'Quantity')}" />
+
+						<g:sortableColumn property="stock" title="${message(code: 'perfumery.stock.label', default: 'Stock')}" />
 					
 					</tr>
 				</thead>
@@ -52,6 +54,8 @@
 						<td>${fieldValue(bean: perfumeryInstance, field: "price")}</td>
 
 						<td>${fieldValue(bean: perfumeryInstance, field: "quantity")}</td>
+
+						<td>${fieldValue(bean: perfumeryInstance, field: "stock")}</td>
 
 					</tr>
 				</g:each>

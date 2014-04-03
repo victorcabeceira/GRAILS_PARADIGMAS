@@ -40,7 +40,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 
-	<g:field name="quantity" value="${fieldValue(bean: perfumeryInstance, field: 'quantity')}" required=""/>
+	<g:field name="price" value="${fieldValue(bean: perfumeryInstance, field: 'price')}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: perfumeryInstance, field: 'quantity', 'error')} required">
@@ -48,5 +48,13 @@
 		<g:message code="perfumery.quantity.label" default="Quantity" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="quantity" value="${fieldValue(bean: perfumeryInstance, field: 'quantity')}" required=""/>
+	<g:field name="quantity" type="number" value="${perfumeryInstance.quantity}" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: perfumeryInstance, field: 'stock', 'error')} required">
+	<label for="stock">
+		<g:message code="perfumery.stock.label" default="Stock" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="stock" type="number" value="${perfumeryInstance.stock}" required=""/>
 </div>

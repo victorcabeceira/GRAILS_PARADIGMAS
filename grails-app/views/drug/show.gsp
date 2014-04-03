@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${drugInstance?.pack}">
+				<li class="fieldcontain">
+					<span id="pack-label" class="property-label"><g:message code="drug.pack.label" default="Pack" /></span>
+					
+						<span class="property-value" aria-labelledby="pack-label"><g:fieldValue bean="${drugInstance}" field="pack"/></span>
+					
+				</li>
+				</g:if>
+
 				<g:if test="${drugInstance?.type}">
 				<li class="fieldcontain">
 					<span id="type-label" class="property-label"><g:message code="drug.type.label" default="Type" /></span>
@@ -73,6 +82,15 @@
 					<span id="code-label" class="property-label"><g:message code="drug.code.label" default="Code" /></span>
 					
 						<span class="property-value" aria-labelledby="code-label"><g:fieldValue bean="${drugInstance}" field="code"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${drugInstance?.stock}">
+				<li class="fieldcontain">
+					<span id="stock-label" class="property-label"><g:message code="drug.stock.label" default="Stock" /></span>
+					
+						<span class="property-value" aria-labelledby="stock-label"><g:fieldValue bean="${drugInstance}" field="stock"/></span>
 					
 				</li>
 				</g:if>

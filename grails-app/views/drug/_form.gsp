@@ -18,6 +18,14 @@
 	<g:textField name="manufacturer" maxlength="50" required="" value="${drugInstance?.manufacturer}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: drugInstance, field: 'pack', 'error')} required">
+	<label for="pack">
+		<g:message code="drug.pack.label" default="Pack" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="pack" from="${drugInstance.constraints.pack.inList}" required="" value="${drugInstance?.pack}" valueMessagePrefix="drug.pack"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: drugInstance, field: 'type', 'error')} required">
 	<label for="type">
 		<g:message code="drug.type.label" default="Type" />
@@ -32,7 +40,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 
-	<g:field name="quantity" value="${fieldValue(bean: drugInstance, field: 'quantity')}" required=""/>
+	<g:field name="price" value="${fieldValue(bean: drugInstance, field: 'price')}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: drugInstance, field: 'quantity', 'error')} required">
@@ -40,7 +48,7 @@
 		<g:message code="drug.quantity.label" default="Quantity" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="quantity" value="${fieldValue(bean: drugInstance, field: 'quantity')}" required=""/>
+	<g:field name="quantity" type="number" value="${drugInstance.quantity}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: drugInstance, field: 'register', 'error')} required">
@@ -57,5 +65,13 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="code" required="" value="${drugInstance?.code}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: drugInstance, field: 'stock', 'error')} required">
+	<label for="stock">
+		<g:message code="drug.stock.label" default="Stock" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="stock" type="number" value="${drugInstance.stock}" required=""/>
 </div>
 

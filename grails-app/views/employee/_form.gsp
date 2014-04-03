@@ -39,5 +39,5 @@
 		<g:message code="employee.age.label" default="Age" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="age" required="" value="${employeeInstance?.age}"/>
+	<g:field name="age" type="number" value="${employeeInstance.age}" required=""/>
 </div>
