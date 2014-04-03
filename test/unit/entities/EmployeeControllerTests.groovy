@@ -5,14 +5,19 @@ package entities
 import org.junit.*
 import grails.test.mixin.*
 
+/**
+ * EmployeeControllerTests
+ * A unit test class is used to test individual methods or blocks of code without considering the surrounding infrastructure
+ */
 @TestFor(EmployeeController)
 @Mock(Employee)
 class EmployeeControllerTests {
 
+
     def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+      assert params != null
+      // TODO: Populate valid properties like...
+      //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -29,9 +34,9 @@ class EmployeeControllerTests {
     }
 
     void testCreate() {
-        def model = controller.create()
+       def model = controller.create()
 
-        assert model.employeeInstance != null
+       assert model.employeeInstance != null
     }
 
     void testSave() {
@@ -56,6 +61,7 @@ class EmployeeControllerTests {
         assert flash.message != null
         assert response.redirectedUrl == '/employee/list'
 
+
         populateValidParams(params)
         def employee = new Employee(params)
 
@@ -73,6 +79,7 @@ class EmployeeControllerTests {
 
         assert flash.message != null
         assert response.redirectedUrl == '/employee/list'
+
 
         populateValidParams(params)
         def employee = new Employee(params)
@@ -93,6 +100,7 @@ class EmployeeControllerTests {
         assert response.redirectedUrl == '/employee/list'
 
         response.reset()
+
 
         populateValidParams(params)
         def employee = new Employee(params)

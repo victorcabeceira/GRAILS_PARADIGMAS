@@ -13,7 +13,8 @@ class Product {
             size: 1..50)
     	manufacturer(blank: false,
             size: 1..50)
-    	type(blank: false,
+    	type(maxSize: 20000,
+            blank: false,
             inList: ["Liquid", "Bar"])
     	quantity(blank: false)
         price(blank:false)

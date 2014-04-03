@@ -1,0 +1,5 @@
+#Grails Metadata file
+#Wed Apr 02 19:14:35 BRT 2014
+app.grails.version=2.2.4
+app.name=Interface
+app.version=0.1

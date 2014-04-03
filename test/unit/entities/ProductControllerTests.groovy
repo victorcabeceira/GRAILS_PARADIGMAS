@@ -5,14 +5,19 @@ package entities
 import org.junit.*
 import grails.test.mixin.*
 
+/**
+ * ProductControllerTests
+ * A unit test class is used to test individual methods or blocks of code without considering the surrounding infrastructure
+ */
 @TestFor(ProductController)
 @Mock(Product)
 class ProductControllerTests {
 
+
     def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+      assert params != null
+      // TODO: Populate valid properties like...
+      //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -29,9 +34,9 @@ class ProductControllerTests {
     }
 
     void testCreate() {
-        def model = controller.create()
+       def model = controller.create()
 
-        assert model.productInstance != null
+       assert model.productInstance != null
     }
 
     void testSave() {
@@ -56,6 +61,7 @@ class ProductControllerTests {
         assert flash.message != null
         assert response.redirectedUrl == '/product/list'
 
+
         populateValidParams(params)
         def product = new Product(params)
 
@@ -73,6 +79,7 @@ class ProductControllerTests {
 
         assert flash.message != null
         assert response.redirectedUrl == '/product/list'
+
 
         populateValidParams(params)
         def product = new Product(params)
@@ -93,6 +100,7 @@ class ProductControllerTests {
         assert response.redirectedUrl == '/product/list'
 
         response.reset()
+
 
         populateValidParams(params)
         def product = new Product(params)
