@@ -13,15 +13,15 @@
 		<div class="span4">
 				<h4>Team</h4>
 		<p>
-			Caio Nardelli</br>
+			Caio Nardelli - caio.nardelli@hotmail.com</br>
 			João Paulo Ribero  -  johnnys.ribeiro@gmail.com</br>
 			Leandro Veloso  - leandrovelosorodrigues@gmail.com</br>
-			Victor Fellipe
+			Victor Fellipe -  victorfgcabeceira@gmail.com
 		</p>
 			</div>
 
 		<h4>Information</h4>
-		<p>This Web site was developed as a demand for the subject "Paradigmas de Programção" tutored by Milene Serrano in order to practice the coding by convetion paradigm.
+		<p>This Web site was developed as a demand for the subject "Paradigmas de Programação" tutored by Milene Serrano in order to practice the coding by convetion paradigm.
 		</p>
 	
 		<p class="pull-right"><a href="#">Back to top</a></p>

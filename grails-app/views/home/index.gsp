@@ -50,7 +50,7 @@
 	    	<div class="span3">
 		    	<div class="center">
 					<a href="perfumery/list"><img src="./images/perfum.png" border="none" />
-						<h3>Perfumes</h3>
+						<h3>Perfumery</h3>
 					</a> 
 				</div>
 			</div>
