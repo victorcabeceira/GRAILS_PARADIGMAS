@@ -26,6 +26,14 @@
 	<g:select name="type" from="${perfumeryInstance.constraints.type.inList}" required="" value="${perfumeryInstance?.type}" valueMessagePrefix="perfumery.type"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: perfumeryInstance, field: 'fragrancy', 'error')} required">
+	<label for="fragrancy">
+		<g:message code="perfumery.fragrancy.label" default="Fragrancy" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="fragrancy" from="${perfumeryInstance.constraints.fragrancy.inList}" required="" value="${perfumeryInstance?.fragrancy}" valueMessagePrefix="perfumery.fragrancy"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: perfumeryInstance, field: 'price', 'error')} required">
 	<label for="price">
 		<g:message code="perfumery.price.label" default="Price" />
