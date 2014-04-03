@@ -1,13 +1,37 @@
 <div class="">
 	<ul class="nav nav-tabs" data-role="listview" data-split-icon="gear" data-filter="true">
 	
-		<g:each status="i" var="c" in="${grailsApplication.controllerClasses.sort { it.logicalPropertyName } }">
-			<li class="controller${params.controller == c.logicalPropertyName ? " active" : ""}">
-				<g:link controller="${c.logicalPropertyName}" action="index">
-					<g:message code="${c.logicalPropertyName}.label" default="${c.logicalPropertyName.capitalize()}"/>
-				</g:link>
+			<li class="controller ">
+				<a href="/DrugStore/">
+					Home
+				</a>
 			</li>
-		</g:each>
+
+			<li class="controller">
+				<a href="/DrugStore/client/index">
+					Client
+				</a>
+			</li>
+		
+		
+			<li class="controller">
+				<a href="/DrugStore/drug/index">
+					Drug
+				</a>
+			</li>
+		
+			<li class="controller">
+				<a href="/DrugStore/employee/index">
+					Employee
+				</a>
+			</li>
+		
+			<li class="controller">
+				<a href="/DrugStore/perfumery/index">
+					Perfumery
+				</a>
+			</li>
 		
 	</ul>
+
 </div>
