@@ -18,7 +18,6 @@ class Product {
             inList: ["Liquid", "Bar"])
     	quantity(blank: false)
         price(blank:false)
-
     }
 
 }
