@@ -25,6 +25,14 @@
 					<tr>
 					
 						<g:sortableColumn property="s_code" title="${message(code: 'employee.s_code.label', default: 'Scode')}" />
+
+						<g:sortableColumn property="firstName" title="${message(code: 'employee.firstName.label', default: 'First Name')}" />
+					
+						<g:sortableColumn property="lastName" title="${message(code: 'employee.lastName.label', default: 'Last Name')}" />
+					
+						<g:sortableColumn property="cpf" title="${message(code: 'employee.cpf.label', default: 'Cpf')}" />
+						
+						<g:sortableColumn property="age" title="${message(code: 'employee.age.label', default: 'Age')}" />
 					
 					</tr>
 				</thead>
@@ -33,6 +41,14 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${employeeInstance.id}">${fieldValue(bean: employeeInstance, field: "s_code")}</g:link></td>
+
+						<td>${fieldValue(bean: employeeInstance, field: "firstName")}</td>
+
+						<td>${fieldValue(bean: employeeInstance, field: "lastName")}</td>
+					
+						<td>${fieldValue(bean: employeeInstance, field: "cpf")}</td>
+
+						<td>${fieldValue(bean: employeeInstance, field: "age")}</td>
 					
 					</tr>
 				</g:each>

@@ -29,7 +29,9 @@
 						<g:sortableColumn property="lastName" title="${message(code: 'client.lastName.label', default: 'Last Name')}" />
 					
 						<g:sortableColumn property="cpf" title="${message(code: 'client.cpf.label', default: 'Cpf')}" />
-					
+						
+						<g:sortableColumn property="age" title="${message(code: 'client.age.label', default: 'Age')}" />
+
 						<g:sortableColumn property="email" title="${message(code: 'client.email.label', default: 'Email')}" />
 					
 					</tr>
@@ -43,6 +45,8 @@
 						<td>${fieldValue(bean: clientInstance, field: "lastName")}</td>
 					
 						<td>${fieldValue(bean: clientInstance, field: "cpf")}</td>
+
+						<td>${fieldValue(bean: clientInstance, field: "age")}</td>
 					
 						<td>${fieldValue(bean: clientInstance, field: "email")}</td>
 					

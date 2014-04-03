@@ -13,8 +13,9 @@ class Person {
 		lastName(blank: false,
 			size: 2..25)
 		cpf(blank: false,
-			cpf: true)
-		age(blank: false)
+			size: 11..14)
+		age(blank: false,
+			size: 6..120)
 	}
 
 }

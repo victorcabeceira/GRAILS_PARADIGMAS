@@ -26,6 +26,14 @@
 	<g:textField name="cpf" required="" value="${clientInstance?.cpf}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'age', 'error')} required">
+	<label for="age">
+		<g:message code="client.age.label" default="Cpf" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="age" required="" value="${clientInstance?.age}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: clientInstance, field: 'email', 'error')} required">
 	<label for="email">
 		<g:message code="client.email.label" default="Email" />

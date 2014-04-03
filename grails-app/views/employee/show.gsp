@@ -31,6 +31,42 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${employeeInstance?.firstName}">
+				<li class="fieldcontain">
+					<span id="firstName-label" class="property-label"><g:message code="employee.firstName.label" default="First Name" /></span>
+					
+						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${employeeInstance}" field="firstName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${employeeInstance?.lastName}">
+				<li class="fieldcontain">
+					<span id="lastName-label" class="property-label"><g:message code="employee.lastName.label" default="Last Name" /></span>
+					
+						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${employeeInstance}" field="lastName"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${employeeInstance?.cpf}">
+				<li class="fieldcontain">
+					<span id="cpf-label" class="property-label"><g:message code="employee.cpf.label" default="Cpf" /></span>
+					
+						<span class="property-value" aria-labelledby="cpf-label"><g:fieldValue bean="${employeeInstance}" field="cpf"/></span>
+					
+				</li>
+				</g:if>
+
+				<g:if test="${employeeInstance?.age}">
+				<li class="fieldcontain">
+					<span id="age-label" class="property-label"><g:message code="employee.age.label" default="Age" /></span>
+					
+						<span class="property-value" aria-labelledby="age-label"><g:fieldValue bean="${employeeInstance}" field="age"/></span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>

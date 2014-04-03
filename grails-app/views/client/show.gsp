@@ -49,6 +49,15 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${clientInstance?.age}">
+				<li class="fieldcontain">
+					<span id="age-label" class="property-label"><g:message code="client.age.label" default="Age" /></span>
+					
+						<span class="property-value" aria-labelledby="age-label"><g:fieldValue bean="${clientInstance}" field="age"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${clientInstance?.email}">
 				<li class="fieldcontain">

@@ -1,6 +1,6 @@
 package entities
 
-class Employee {
+class Employee extends Person {
   
 	/*String login          //Código para login na tela de cadastro
 	int l_password*/
@@ -11,6 +11,8 @@ class Employee {
     	/*login(blank: false,
 			size: 2..10)
     	l_password(blank: false)*/
-    	s_code(blank: false) 
+    	
+    	s_code(blank: false,
+    		unique: true, size: 1..100) 
     }
 }
