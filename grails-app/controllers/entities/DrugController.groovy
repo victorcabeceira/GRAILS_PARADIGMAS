@@ -2,6 +2,10 @@ package entities
 
 import org.springframework.dao.DataIntegrityViolationException
 
+/**
+ * DrugController
+ * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
+ */
 class DrugController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -10,8 +14,8 @@ class DrugController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [drugInstanceList: Drug.list(params), drugInstanceTotal: Drug.count()]
     }
 
@@ -26,14 +30,14 @@ class DrugController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'drug.label', default: 'Drug'), drugInstance.id])
+		flash.message = message(code: 'default.created.message', args: [message(code: 'drug.label', default: 'Drug'), drugInstance.id])
         redirect(action: "show", id: drugInstance.id)
     }
 
-    def show(Long id) {
-        def drugInstance = Drug.get(id)
+    def show() {
+        def drugInstance = Drug.get(params.id)
         if (!drugInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), params.id])
             redirect(action: "list")
             return
         }
@@ -41,10 +45,10 @@ class DrugController {
         [drugInstance: drugInstance]
     }
 
-    def edit(Long id) {
-        def drugInstance = Drug.get(id)
+    def edit() {
+        def drugInstance = Drug.get(params.id)
         if (!drugInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), params.id])
             redirect(action: "list")
             return
         }
@@ -52,15 +56,16 @@ class DrugController {
         [drugInstance: drugInstance]
     }
 
-    def update(Long id, Long version) {
-        def drugInstance = Drug.get(id)
+    def update() {
+        def drugInstance = Drug.get(params.id)
         if (!drugInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), params.id])
             redirect(action: "list")
             return
         }
 
-        if (version != null) {
+        if (params.version) {
+            def version = params.version.toLong()
             if (drugInstance.version > version) {
                 drugInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'drug.label', default: 'Drug')] as Object[],
@@ -77,26 +82,26 @@ class DrugController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'drug.label', default: 'Drug'), drugInstance.id])
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'drug.label', default: 'Drug'), drugInstance.id])
         redirect(action: "show", id: drugInstance.id)
     }
 
-    def delete(Long id) {
-        def drugInstance = Drug.get(id)
+    def delete() {
+        def drugInstance = Drug.get(params.id)
         if (!drugInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'drug.label', default: 'Drug'), params.id])
             redirect(action: "list")
             return
         }
 
         try {
             drugInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'drug.label', default: 'Drug'), id])
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'drug.label', default: 'Drug'), params.id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'drug.label', default: 'Drug'), id])
-            redirect(action: "show", id: id)
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'drug.label', default: 'Drug'), params.id])
+            redirect(action: "show", id: params.id)
         }
     }
 }

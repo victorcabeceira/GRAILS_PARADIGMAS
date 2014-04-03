@@ -2,6 +2,10 @@ package entities
 
 import org.springframework.dao.DataIntegrityViolationException
 
+/**
+ * EmployeeController
+ * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
+ */
 class EmployeeController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -10,8 +14,8 @@ class EmployeeController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [employeeInstanceList: Employee.list(params), employeeInstanceTotal: Employee.count()]
     }
 
@@ -26,14 +30,14 @@ class EmployeeController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'employee.label', default: 'Employee'), employeeInstance.id])
+		flash.message = message(code: 'default.created.message', args: [message(code: 'employee.label', default: 'Employee'), employeeInstance.id])
         redirect(action: "show", id: employeeInstance.id)
     }
 
-    def show(Long id) {
-        def employeeInstance = Employee.get(id)
+    def show() {
+        def employeeInstance = Employee.get(params.id)
         if (!employeeInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), params.id])
             redirect(action: "list")
             return
         }
@@ -41,10 +45,10 @@ class EmployeeController {
         [employeeInstance: employeeInstance]
     }
 
-    def edit(Long id) {
-        def employeeInstance = Employee.get(id)
+    def edit() {
+        def employeeInstance = Employee.get(params.id)
         if (!employeeInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), params.id])
             redirect(action: "list")
             return
         }
@@ -52,15 +56,16 @@ class EmployeeController {
         [employeeInstance: employeeInstance]
     }
 
-    def update(Long id, Long version) {
-        def employeeInstance = Employee.get(id)
+    def update() {
+        def employeeInstance = Employee.get(params.id)
         if (!employeeInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), params.id])
             redirect(action: "list")
             return
         }
 
-        if (version != null) {
+        if (params.version) {
+            def version = params.version.toLong()
             if (employeeInstance.version > version) {
                 employeeInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'employee.label', default: 'Employee')] as Object[],
@@ -77,26 +82,26 @@ class EmployeeController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'employee.label', default: 'Employee'), employeeInstance.id])
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'employee.label', default: 'Employee'), employeeInstance.id])
         redirect(action: "show", id: employeeInstance.id)
     }
 
-    def delete(Long id) {
-        def employeeInstance = Employee.get(id)
+    def delete() {
+        def employeeInstance = Employee.get(params.id)
         if (!employeeInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'employee.label', default: 'Employee'), params.id])
             redirect(action: "list")
             return
         }
 
         try {
             employeeInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'employee.label', default: 'Employee'), id])
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'employee.label', default: 'Employee'), params.id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'employee.label', default: 'Employee'), id])
-            redirect(action: "show", id: id)
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'employee.label', default: 'Employee'), params.id])
+            redirect(action: "show", id: params.id)
         }
     }
 }

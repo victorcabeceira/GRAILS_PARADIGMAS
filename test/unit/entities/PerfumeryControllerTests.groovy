@@ -5,14 +5,19 @@ package entities
 import org.junit.*
 import grails.test.mixin.*
 
+/**
+ * PerfumeryControllerTests
+ * A unit test class is used to test individual methods or blocks of code without considering the surrounding infrastructure
+ */
 @TestFor(PerfumeryController)
 @Mock(Perfumery)
 class PerfumeryControllerTests {
 
+
     def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+      assert params != null
+      // TODO: Populate valid properties like...
+      //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -29,9 +34,9 @@ class PerfumeryControllerTests {
     }
 
     void testCreate() {
-        def model = controller.create()
+       def model = controller.create()
 
-        assert model.perfumeryInstance != null
+       assert model.perfumeryInstance != null
     }
 
     void testSave() {
@@ -56,6 +61,7 @@ class PerfumeryControllerTests {
         assert flash.message != null
         assert response.redirectedUrl == '/perfumery/list'
 
+
         populateValidParams(params)
         def perfumery = new Perfumery(params)
 
@@ -73,6 +79,7 @@ class PerfumeryControllerTests {
 
         assert flash.message != null
         assert response.redirectedUrl == '/perfumery/list'
+
 
         populateValidParams(params)
         def perfumery = new Perfumery(params)
@@ -93,6 +100,7 @@ class PerfumeryControllerTests {
         assert response.redirectedUrl == '/perfumery/list'
 
         response.reset()
+
 
         populateValidParams(params)
         def perfumery = new Perfumery(params)

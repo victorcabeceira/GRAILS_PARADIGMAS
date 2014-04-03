@@ -2,6 +2,10 @@ package entities
 
 import org.springframework.dao.DataIntegrityViolationException
 
+/**
+ * ClientController
+ * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
+ */
 class ClientController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -10,8 +14,8 @@ class ClientController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [clientInstanceList: Client.list(params), clientInstanceTotal: Client.count()]
     }
 
@@ -26,14 +30,14 @@ class ClientController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'client.label', default: 'Client'), clientInstance.id])
+		flash.message = message(code: 'default.created.message', args: [message(code: 'client.label', default: 'Client'), clientInstance.id])
         redirect(action: "show", id: clientInstance.id)
     }
 
-    def show(Long id) {
-        def clientInstance = Client.get(id)
+    def show() {
+        def clientInstance = Client.get(params.id)
         if (!clientInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), params.id])
             redirect(action: "list")
             return
         }
@@ -41,10 +45,10 @@ class ClientController {
         [clientInstance: clientInstance]
     }
 
-    def edit(Long id) {
-        def clientInstance = Client.get(id)
+    def edit() {
+        def clientInstance = Client.get(params.id)
         if (!clientInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), params.id])
             redirect(action: "list")
             return
         }
@@ -52,15 +56,16 @@ class ClientController {
         [clientInstance: clientInstance]
     }
 
-    def update(Long id, Long version) {
-        def clientInstance = Client.get(id)
+    def update() {
+        def clientInstance = Client.get(params.id)
         if (!clientInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), params.id])
             redirect(action: "list")
             return
         }
 
-        if (version != null) {
+        if (params.version) {
+            def version = params.version.toLong()
             if (clientInstance.version > version) {
                 clientInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'client.label', default: 'Client')] as Object[],
@@ -77,26 +82,26 @@ class ClientController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'client.label', default: 'Client'), clientInstance.id])
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'client.label', default: 'Client'), clientInstance.id])
         redirect(action: "show", id: clientInstance.id)
     }
 
-    def delete(Long id) {
-        def clientInstance = Client.get(id)
+    def delete() {
+        def clientInstance = Client.get(params.id)
         if (!clientInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'client.label', default: 'Client'), params.id])
             redirect(action: "list")
             return
         }
 
         try {
             clientInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'client.label', default: 'Client'), id])
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'client.label', default: 'Client'), params.id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'client.label', default: 'Client'), id])
-            redirect(action: "show", id: id)
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'client.label', default: 'Client'), params.id])
+            redirect(action: "show", id: params.id)
         }
     }
 }
