@@ -21,7 +21,7 @@
 			<div class="control-group fieldcontain ${hasErrors(bean: perfumeryInstance, field: 'quantity', 'error')} required">
 				<label for="quantity" class="control-label"><g:message code="perfumery.quantity.label" default="Quantity" /><span class="required-indicator">*</span></label>
 				<div class="controls">
-					<g:field type="number" name="quantity" required="" value="${perfumeryInstance.quantity}"/>
+					<g:field type="number" name="quantity" min="0" required="" value="${perfumeryInstance.quantity}"/>
 					<span class="help-inline">${hasErrors(bean: perfumeryInstance, field: 'quantity', 'error')}</span>
 				</div>
 			</div>
@@ -29,7 +29,7 @@
 			<div class="control-group fieldcontain ${hasErrors(bean: perfumeryInstance, field: 'price', 'error')} required">
 				<label for="price" class="control-label"><g:message code="perfumery.price.label" default="Price" /><span class="required-indicator">*</span></label>
 				<div class="controls">
-					<g:field type="number" name="price" step="any" required="" value="${perfumeryInstance.price}"/>
+					<g:field type="number" name="price" min="0" step="any" required="" value="${perfumeryInstance.price}"/>
 					<span class="help-inline">${hasErrors(bean: perfumeryInstance, field: 'price', 'error')}</span>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 			<div class="control-group fieldcontain ${hasErrors(bean: perfumeryInstance, field: 'stock', 'error')} required">
 				<label for="stock" class="control-label"><g:message code="perfumery.stock.label" default="Stock" /><span class="required-indicator">*</span></label>
 				<div class="controls">
-					<g:field type="number" name="stock" required="" value="${perfumeryInstance.stock}"/>
+					<g:field type="number" name="stock" min="0" required="" value="${perfumeryInstance.stock}"/>
 					<span class="help-inline">${hasErrors(bean: perfumeryInstance, field: 'stock', 'error')}</span>
 				</div>
 			</div>
