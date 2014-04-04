@@ -1,81 +1,61 @@
 
 <%@ page import="entities.Client" %>
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'client.label', default: 'Client')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#show-client" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-client" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list client">
-			
-				<g:if test="${clientInstance?.firstName}">
-				<li class="fieldcontain">
-					<span id="firstName-label" class="property-label"><g:message code="client.firstName.label" default="First Name" /></span>
-					
-						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${clientInstance}" field="firstName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${clientInstance?.lastName}">
-				<li class="fieldcontain">
-					<span id="lastName-label" class="property-label"><g:message code="client.lastName.label" default="Last Name" /></span>
-					
-						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${clientInstance}" field="lastName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${clientInstance?.cpf}">
-				<li class="fieldcontain">
-					<span id="cpf-label" class="property-label"><g:message code="client.cpf.label" default="Cpf" /></span>
-					
-						<span class="property-value" aria-labelledby="cpf-label"><g:fieldValue bean="${clientInstance}" field="cpf"/></span>
-					
-				</li>
-				</g:if>
 
-				<g:if test="${clientInstance?.age}">
-				<li class="fieldcontain">
-					<span id="age-label" class="property-label"><g:message code="client.age.label" default="Age" /></span>
-					
-						<span class="property-value" aria-labelledby="age-label"><g:fieldValue bean="${clientInstance}" field="age"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${clientInstance?.email}">
-				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="client.email.label" default="Email" /></span>
-					
-						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${clientInstance}" field="email"/></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${clientInstance?.id}" />
-					<g:link class="edit" action="edit" id="${clientInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="layout" content="kickstart" />
+	<g:set var="entityName" value="${message(code: 'client.label', default: 'Client')}" />
+	<title><g:message code="default.show.label" args="[entityName]" /></title>
+</head>
+
+<body>
+
+<section id="show-client" class="first">
+
+	<table class="table">
+		<tbody>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="client.firstName.label" default="First Name" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: clientInstance, field: "firstName")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="client.lastName.label" default="Last Name" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: clientInstance, field: "lastName")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="client.cpf.label" default="Cpf" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: clientInstance, field: "cpf")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="client.age.label" default="Age" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: clientInstance, field: "age")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="client.email.label" default="Email" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: clientInstance, field: "email")}</td>
+				
+			</tr>
+		
+		</tbody>
+	</table>
+</section>
+
+</body>
+
 </html>

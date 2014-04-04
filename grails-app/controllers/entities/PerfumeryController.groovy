@@ -2,6 +2,10 @@ package entities
 
 import org.springframework.dao.DataIntegrityViolationException
 
+/**
+ * PerfumeryController
+ * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
+ */
 class PerfumeryController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -10,8 +14,8 @@ class PerfumeryController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [perfumeryInstanceList: Perfumery.list(params), perfumeryInstanceTotal: Perfumery.count()]
     }
 
@@ -26,14 +30,14 @@ class PerfumeryController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), perfumeryInstance.id])
+		flash.message = message(code: 'default.created.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), perfumeryInstance.id])
         redirect(action: "show", id: perfumeryInstance.id)
     }
 
-    def show(Long id) {
-        def perfumeryInstance = Perfumery.get(id)
+    def show() {
+        def perfumeryInstance = Perfumery.get(params.id)
         if (!perfumeryInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), params.id])
             redirect(action: "list")
             return
         }
@@ -41,10 +45,10 @@ class PerfumeryController {
         [perfumeryInstance: perfumeryInstance]
     }
 
-    def edit(Long id) {
-        def perfumeryInstance = Perfumery.get(id)
+    def edit() {
+        def perfumeryInstance = Perfumery.get(params.id)
         if (!perfumeryInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), params.id])
             redirect(action: "list")
             return
         }
@@ -52,15 +56,16 @@ class PerfumeryController {
         [perfumeryInstance: perfumeryInstance]
     }
 
-    def update(Long id, Long version) {
-        def perfumeryInstance = Perfumery.get(id)
+    def update() {
+        def perfumeryInstance = Perfumery.get(params.id)
         if (!perfumeryInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), params.id])
             redirect(action: "list")
             return
         }
 
-        if (version != null) {
+        if (params.version) {
+            def version = params.version.toLong()
             if (perfumeryInstance.version > version) {
                 perfumeryInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'perfumery.label', default: 'Perfumery')] as Object[],
@@ -77,26 +82,26 @@ class PerfumeryController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), perfumeryInstance.id])
+		flash.message = message(code: 'default.updated.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), perfumeryInstance.id])
         redirect(action: "show", id: perfumeryInstance.id)
     }
 
-    def delete(Long id) {
-        def perfumeryInstance = Perfumery.get(id)
+    def delete() {
+        def perfumeryInstance = Perfumery.get(params.id)
         if (!perfumeryInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), id])
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), params.id])
             redirect(action: "list")
             return
         }
 
         try {
             perfumeryInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), id])
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), params.id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), id])
-            redirect(action: "show", id: id)
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'perfumery.label', default: 'Perfumery'), params.id])
+            redirect(action: "show", id: params.id)
         }
     }
 }
