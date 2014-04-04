@@ -3,9 +3,7 @@ package entities
 class Drug extends Product {
 
 	String register
-	
 	String code
-	
 	String pack
 
 	static constraints = {

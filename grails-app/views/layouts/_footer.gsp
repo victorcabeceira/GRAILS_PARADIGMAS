@@ -5,7 +5,7 @@
 			<div class="span2">
 				<h4>Technologies</h4>
 		<p>
-			Grails 2.4</br>
+			Grails 2.2.4</br>
 			Quick Start Twitter BootStrap - 0.9.6 </br>
 		</p>
 		</div>
@@ -21,7 +21,7 @@
 			</div>
 
 		<h4>Information</h4>
-		<p>This Web site was developed as a demand for the subject "Paradigmas de Programação" tutored by Milene Serrano in order to practice the coding by convetion paradigm.
+		<p>This Web site was developed as a demand for the subject "Paradigmas de Programação" tutored by Milene Serrano in order to practice the coding by convention paradigm.
 		</p>
 	
 		<p class="pull-right"><a href="#">Back to top</a></p>

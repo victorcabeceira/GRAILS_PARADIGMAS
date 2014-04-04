@@ -3,16 +3,13 @@ package entities
 class Product {
 
 	String name
-	
     String manufacturer
-	
     String type
-    
+
     int quantity
-	
+	int stock
+
     double price
-    
-    int stock
 
     static constraints = {
     	
@@ -21,13 +18,11 @@ class Product {
     	
         manufacturer(blank: false,
             size: 1..50)
-    	
-        quantity(blank: false)
-        
-        price(blank: false)
-        
-        stock(blank: false)
 
+        quantity(min: 0)
+
+        stock(min: 0)
+        
     }
 
 }
