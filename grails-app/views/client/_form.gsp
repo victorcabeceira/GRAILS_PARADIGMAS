@@ -29,7 +29,7 @@
 			<div class="control-group fieldcontain ${hasErrors(bean: clientInstance, field: 'age', 'error')} required">
 				<label for="age" class="control-label"><g:message code="client.age.label" default="Age" /><span class="required-indicator">*</span></label>
 				<div class="controls">
-					<g:field type="number" name="age" required="" value="${clientInstance.age}"/>
+					<g:field type="number" name="age" min="0" required="" value="${clientInstance.age}"/>
 					<span class="help-inline">${hasErrors(bean: clientInstance, field: 'age', 'error')}</span>
 				</div>
 			</div>

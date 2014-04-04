@@ -21,7 +21,7 @@
 			<div class="control-group fieldcontain ${hasErrors(bean: drugInstance, field: 'quantity', 'error')} required">
 				<label for="quantity" class="control-label"><g:message code="drug.quantity.label" default="Quantity" /><span class="required-indicator">*</span></label>
 				<div class="controls">
-					<g:field type="number" name="quantity" required="" value="${drugInstance.quantity}"/>
+					<g:field type="number" name="quantity" min="0" required="" value="${drugInstance.quantity}"/>
 					<span class="help-inline">${hasErrors(bean: drugInstance, field: 'quantity', 'error')}</span>
 				</div>
 			</div>
@@ -29,7 +29,7 @@
 			<div class="control-group fieldcontain ${hasErrors(bean: drugInstance, field: 'price', 'error')} required">
 				<label for="price" class="control-label"><g:message code="drug.price.label" default="Price" /><span class="required-indicator">*</span></label>
 				<div class="controls">
-					<g:field type="number" name="price" step="any" required="" value="${drugInstance.price}"/>
+					<g:field type="number" name="price" min="0" step="any" required="" value="${drugInstance.price}"/>
 					<span class="help-inline">${hasErrors(bean: drugInstance, field: 'price', 'error')}</span>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 			<div class="control-group fieldcontain ${hasErrors(bean: drugInstance, field: 'stock', 'error')} required">
 				<label for="stock" class="control-label"><g:message code="drug.stock.label" default="Stock" /><span class="required-indicator">*</span></label>
 				<div class="controls">
-					<g:field type="number" name="stock" required="" value="${drugInstance.stock}"/>
+					<g:field type="number" name="stock" min="0" required="" value="${drugInstance.stock}"/>
 					<span class="help-inline">${hasErrors(bean: drugInstance, field: 'stock', 'error')}</span>
 				</div>
 			</div>
