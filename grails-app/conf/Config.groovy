@@ -40,7 +40,7 @@ grails.views.default.codec = "none" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
 grails.converters.encoding = "UTF-8"
 // enable Sitemesh preprocessing of GSP pages
-grails.views.gsp.sitemesh.preprocess = true
+grails.views.gsp.sitemesh.preprocess = false
 // scaffolding templates configuration
 grails.scaffolding.templates.domainSuffix = 'Instance'
 
@@ -58,9 +58,6 @@ grails.exceptionresolver.params.exclude = ['password']
 
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
-
-// configure br validation cpf to be unmasked
-grails.plugins.brValidation.validation.type = masked
 
 environments {
     development {
